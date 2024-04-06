@@ -33,12 +33,18 @@ async function popularTabela() {
         const valor = newRow.insertCell(3)
         const editar = newRow.insertCell(4)
         const excluir = newRow.insertCell(5)
+        const imgEditar = document.createElement('img')
+        const imgExcluir = document.createElement('img')
+
+        imgEditar.src = '../img/editar.png'
+        imgExcluir.src = '../img/lixeira.png'
 
         id.innerHTML = filme.id
         titulo.innerHTML = filme.nome
         dataLancamento.innerHTML = formatarData(filme.data_lancamento)
         valor.innerHTML = `R$ ${formatarValorUnitario(filme.valor_unitario)}`
-
+        editar.appendChild(imgEditar)
+        excluir.appendChild(imgExcluir)
 
     })
 }

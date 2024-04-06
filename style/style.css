@@ -65,3 +65,8 @@ header {
     font-weight: 100;
     margin-top: -0.3125rem;
 }
+
+img {
+    width: 1rem;
+    margin-left: 0.9375rem;
+}
