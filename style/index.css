@@ -86,3 +86,7 @@ main {
     padding-left: 4.5rem;
     padding-right: 4rem;
 }
+
+input {
+    color: black;
+}

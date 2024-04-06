@@ -37,7 +37,7 @@ async function popularTabela() {
         id.innerHTML = filme.id
         titulo.innerHTML = filme.nome
         dataLancamento.innerHTML = formatarData(filme.data_lancamento)
-        valor.innerHTML = formatarValorUnitario(filme.valor_unitario)
+        valor.innerHTML = `R$ ${formatarValorUnitario(filme.valor_unitario)}`
 
 
     })
