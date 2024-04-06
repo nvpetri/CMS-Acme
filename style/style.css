@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 98vh;
+    background-color: black;
+    background-image: url('../img/bcg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin-right: -15.625rem;
+}
+
+.logo-img {
+    width: 14rem;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    place-content: center;
+}
+
+.tabela {
+    width: 45rem;
+}
+
+.user {
+    height: 4.375rem;
+    width: 15.625rem;
+    background-color: #6D0000;
+    display: flex;
+    flex-direction: row;
+}
+
+header {
+    display: flex;
+}
+
+.pf-adm {
+    padding: 0.625rem;
+    width: 4.375rem;
+    height: 4.375rem;
+    border-radius: 50%;
+}
+
+.nome-ad {
+    color: white;
+    font-size: 1rem;
+    padding-top: 1rem;
+}
+
+.nivel-ad {
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 100;
+    margin-top: -0.3125rem;
+}

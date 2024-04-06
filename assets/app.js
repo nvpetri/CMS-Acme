@@ -25,7 +25,7 @@ async function popularTabela() {
 
     const tabelaBody = document.querySelector('.table tbody')
 
-    filmes.forEach((filme, index) => {
+    filmes.forEach((filme) => {
         const newRow = tabelaBody.insertRow()
         const id = newRow.insertCell(0)
         const titulo = newRow.insertCell(1)
