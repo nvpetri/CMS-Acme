@@ -1,0 +1,44 @@
+* {
+    font-family: 'Pattaya', sans-serif;
+    color: white;
+}
+
+body {
+    height: 98vh;
+    background-color: black;
+    background-image: url('../img/bcg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 98vw;
+}
+
+.logo-img {
+    width: 14rem;
+}
+
+.card {
+    width: 10rem;
+    height: 11rem;
+    margin: 5rem;
+}
+
+h2 {
+    color: black;
+    font-size: larger;
+}
+
+.card:hover {
+    background-color: gray;
+    width: 12rem;
+    height: 13rem;
+}
+
+img {
+    padding-top: 0.3125rem;
+}
