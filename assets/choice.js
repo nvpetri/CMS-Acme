@@ -3,5 +3,6 @@
 const btnFilmes = document.getElementById('filme')
 
 btnFilmes.addEventListener('click', () => {
-    window.location.href = '../pages/home.html'
+
+    window.location.href = '../pages/homeFilmes.html'
 })
