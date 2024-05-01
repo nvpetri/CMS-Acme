@@ -143,7 +143,19 @@ async function excluirFilme(id) {
             console.log('Filme excluído com sucesso!')
             location.reload()
         } else {
-            console.error('Erro ao excluir o filme')
+            console.error('Erro ao excluir o filme', error)
         }
     })
+}
+
+async function deleteFilme(id) {
+    const url = `http://localhost:8080/v2/acmefilmes/deleteFilme/${id}`
+
+    const response = await fetch(url, {
+        method: 'DELETE'
+    })
+
+    const filmes = await response.json()
+
+    return filmes.filmes
 }
