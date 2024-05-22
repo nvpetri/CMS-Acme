@@ -50,7 +50,7 @@ async function popularTabelaFilmes() {
         editar.appendChild(imgEditar)
         excluir.appendChild(imgExcluir)
 
-        imgEditar.addEventListener('click', () => abrirModal(filme.id))
+        imgEditar.addEventListener('click', () => abrirModalEdicao(filme))
         imgExcluir.addEventListener('click', () => excluirFilme(filme.id))
     })
 }
@@ -67,6 +67,10 @@ function abrirModalEdicao(filme) {
     document.getElementById('valor_unitarioEditar').value = filme.valor_unitario
 
     modalEdicao.show()
+}
+
+function formatarTempo(tempo) {
+    return tempo + ':00'
 }
 
 async function atualizarFilme(event) {
@@ -139,12 +143,11 @@ async function excluirFilme(id) {
         modalConfirmacao.hide()
 
         const sucesso = await deleteFilme(id)
-        if (sucesso) {
-            console.log('Filme excluído com sucesso!')
-            location.reload()
-        } else {
-            console.error('Erro ao excluir o filme', error)
-        }
+
+        console.log(sucesso)
+
+        location.reload()
+
     })
 }
 
@@ -158,4 +161,20 @@ async function deleteFilme(id) {
     const filmes = await response.json()
 
     return filmes.filmes
+}
+
+async function putFilme(filme) {
+    const url = `http://localhost:8080/v2/acmefilmes/atualizarfilme/${filme.id}`
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(filme),
+    }
+
+    const response = await fetch(url, options)
+
+    return response.ok
+
 }
