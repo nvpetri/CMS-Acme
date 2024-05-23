@@ -5,6 +5,8 @@ async function getFilmes() {
 
     const filmes = await response.json()
 
+    console.log(filmes)
+
     return filmes.filmes
 }
 
@@ -13,7 +15,7 @@ function formatarData(data_lancamento) {
     const dia = String(dataObj.getDate()).padStart(2, '0')
     const mes = String(dataObj.getMonth() + 1).padStart(2, '0')
     const ano = dataObj.getFullYear()
-    return `${dia}/${mes}/${ano}`
+    return `${ano}/${mes}/${dia}`
 }
 
 function formatarValorUnitario(valor_unitario) {
@@ -93,11 +95,34 @@ async function atualizarFilme(event) {
     }
 }
 
+async function getClassificacoes() {
+    const url = 'http://localhost:8080/v2/acmefilmes/classificacao'
+    const response = await fetch(url)
+
+    const classificacao = await response.json()
+    return classificacao.classificacao
+}
+preencherOpcoesClassificacaoEditar()
+async function preencherOpcoesClassificacaoEditar() {
+    const classificacoes = await getClassificacoes()
+    
+    const selectClassificacao = document.getElementById('classificacao')
+    selectClassificacao.innerHTML = '' // Limpa quaisquer opções anteriores
+
+    classificacoes.forEach(classificacao => {
+        const option = document.createElement('option')
+        option.value = classificacao.id
+        option.textContent = classificacao.nome
+        selectClassificacao.appendChild(option)
+    })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     popularTabelaFilmes()
 
     const btnSalvar = document.getElementById('btnSalvar')
     if (btnSalvar) {
+        
         btnSalvar.addEventListener('click', salvarNovoFilme)
     } else {
         console.error('Elemento com ID btnSalvar não encontrado.')
@@ -111,8 +136,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+async function postFilme (filme) {
+    const url = 'http://localhost:8080/v2/acmefilmes/filme'
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-type':'application/json'
+        },
+        body: JSON.stringify(filme),
+    }
+
+    const response = await fetch (url, options)
+
+    return response.ok
+
+}
+
 async function salvarNovoFilme() {
-    console.log('Função salvarNovoFilme() chamada.')
+    
     const form = document.getElementById('formNovoFilme')
     const formData = new FormData(form)
     const novoFilme = {}
